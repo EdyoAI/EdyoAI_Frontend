@@ -56,7 +56,7 @@ export default function TestCard({
             href={link}
             className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-full transition-colors mt-6 inline-block"
           >
-            Join Now
+            Start Test
           </Link>
         </div>
       </div>
