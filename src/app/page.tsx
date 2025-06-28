@@ -1,103 +1,90 @@
-import Image from "next/image";
+import { FeatureItem, MockTestSet } from "@/types/types";
+import TestCard from "@/components/TestCard";
+import FeatureItemCard from "@/components/FeatureItemCard";
 
-export default function Home() {
+// Dummy data for AI-generated mock test sets
+const mockTestSets: MockTestSet[] = [
+  {
+    id: "1",
+    title: "SSC GD Mock Test Set",
+    subtitle: "(SURE SELECTION)",
+    description:
+      "AI-generated full-length mocks for all state & central exams. Adaptive difficulty, instant analytics, and detailed solutions.",
+
+    price: 1999,
+    discountPercentage: 70,
+    aiFeatures: ["Adaptive", "Instant Analysis", "Personalized Feedback"],
+    coverImage: "https://placehold.co/320x180.png", // Placeholder for tiger image
+    link: "#",
+  },
+  {
+    id: "2",
+    title: "SUPER RAILWAY AI MOCK PACK",
+    subtitle: "(ALL RAILWAY EXAMS)",
+    description:
+      "Comprehensive AI-powered mocks for all Railway exams. Real exam interface, topic-wise analytics, and smart revision.",
+
+    price: 1499,
+    discountPercentage: 60,
+    aiFeatures: ["Topic-wise Analytics", "Smart Revision", "Real Exam UI"],
+    coverImage: "https://placehold.co/320x180.png", // Placeholder for railway image
+    link: "#",
+  },
+];
+
+// Dummy data for features and courses
+const features: FeatureItem[] = [
+  {
+    id: "2",
+    name: "Free Quizzes",
+    icon: "M16 9.5a.5.5 0 00-1 0v4.793l-3.146-3.147a.5.5 0 00-.708 0L9 11.293V9.5a.5.5 0 00-1 0v3.793l-1.146-1.147a.5.5 0 00-.708 0L5 13.793V9.5a.5.5 0 00-1 0V14a.5.5 0 00.146.354l.854.853a.5.5 0 00.708 0L9 13.207l1.146 1.147a.5.5 0 00.708 0L14 11.207l.854.853a.5.5 0 00.708 0L16 13.793V9.5zM12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 18a8 8 0 110-16 8 8 0 010 16z",
+    link: "#",
+  },
+  {
+    id: "3",
+    name: "Free Tests",
+    icon: "M9 13.5H7.5V12h1.5v1.5zm0-3H7.5V9h1.5v1.5zm0-3H7.5V6h1.5v1.5zm4.5 0h-3V6h3v1.5zm0 3h-3V9h3v1.5zm0 3h-3v-1.5h3v1.5zM18 17H6V4h12v13zm-1-11H7v9h10V6zm2 14H5c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h14c1.1 0 2 .9 2 2v14c0 1.1-.9 2-2 2z",
+    link: "#",
+  },
+  {
+    id: "4",
+    name: "Free Notes",
+    icon: "M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h12v16H6V4zm2 5h8v2H8zm0 4h8v2H8zm0 4h5v2H8z",
+    link: "#",
+  },
+  {
+    id: "5",
+    name: "Free Practice",
+    icon: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-.5-13.5H9v2H7.5v-2H6v4h1.5v-2H9v2h1.5v-4zm3 2h-1.5V9h-1.5v2h-1.5V9H10V7.5h3.5v4.5z",
+    link: "#",
+  },
+];
+
+export default function HomePage() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="min-h-screen bg-gray-900 text-white">
+      <main className="container mx-auto p-4 pt-8">
+        {/* Feature Icons Section */}
+        <section className="mb-8">
+          <div className="flex justify-around gap-4 overflow-x-scroll">
+            {features.map((feature) => (
+              <FeatureItemCard key={feature.id} {...feature} />
+            ))}
+          </div>
+        </section>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
+        {/* Coachings Handpicked Section */}
+        <section className="mb-8">
+          <h2 className="text-xl font-bold text-white mb-4 border-l-4 border-red-500 pl-3">
+            Exams handpicked for you
+          </h2>
+          <div className="grid gap-4">
+            {mockTestSets.map((course) => (
+              <TestCard key={course.id} {...course} />
+            ))}
+          </div>
+        </section>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
     </div>
   );
 }
