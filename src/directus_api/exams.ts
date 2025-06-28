@@ -24,6 +24,9 @@ async function getExamsByName(name:string) {
             fields:["subjects"]
         }
     })
+
+    return get(resp, "data.data", [])
+
 }
 
 export {getExams, getExamsByName}
