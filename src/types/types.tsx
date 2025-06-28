@@ -18,4 +18,10 @@ interface FeatureItem {
     coverImage: string;
     link: string;
   }
-  export type { FeatureItem, MockTestSet };
+
+  interface Question {
+    question: string;
+    options: string[];
+    correctOptions: string[]; // indices of correct options
+  }
+  export type { FeatureItem, MockTestSet,Question };

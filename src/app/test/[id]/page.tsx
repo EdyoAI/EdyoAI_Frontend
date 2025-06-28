@@ -1,15 +1,17 @@
-import { useRouter } from 'next/router';
+'use client'
+import { Question } from "@/types/types";
+import { useSelector } from "react-redux";
 
 export default function Workspace() {
-  const router = useRouter();
-  const { exam, subject, topic, questionCount } = router.query;
 
   return (
     <div>
-      <div>exam: {exam}</div>
-      <div>subject: {subject}</div>
-      <div>topic: {topic}</div>
-      <div>questionCount: {questionCount}</div>
-    </div>
-  );
+      {useSelector((state: any) => state.questions)?.map((question: Question, i:number) => (
+        <div key={i}>
+          {question.question}
+        </div>
+      ))}
+    </div>)
+
+
 }
