@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "hamburger-react": "^2.5.2",
+    "next": "15.3.4",
     "@types/lodash": "^4.17.19",
     "axios": "^1.10.0",
     "lodash": "^4.17.21",
