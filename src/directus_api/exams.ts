@@ -11,4 +11,19 @@ async function getExams() {
     return get(resp, 'data.data', [])
 }
 
-export {getExams}
+
+
+async function getExamsByName(name:string) {
+    const resp = await axios.get('/items/exams',{
+        params:{
+            filter:{
+                name:{
+                    _eq:name
+                }
+            },
+            fields:["subjects"]
+        }
+    })
+}
+
+export {getExams, getExamsByName}
