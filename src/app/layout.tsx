@@ -26,11 +26,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${poppins.variable} ${poppins.className}`}>
         <Providers>
-
-               <Navbar/>
-        <main className="min-h-screen bg-gray-900 text-white pt-16">
-        {children}
-        </main>
+          <Navbar />
+          <main className="min-h-screen bg-gray-900 text-white pt-16">
+            {children}
+          </main>
         </Providers>
       </body>
     </html>
