@@ -1,35 +1,40 @@
 import { FeatureItem, MockTestSet } from "@/types/types";
 import TestCard from "@/components/TestCard";
 import FeatureItemCard from "@/components/FeatureItemCard";
+import { getExams } from "@/directus_api/exams";
 
-const mockTestSets: MockTestSet[] = [
-  {
-    id: "1",
-    title: "SSC GD Mock Test Set",
-    subtitle: "(SURE SELECTION)",
-    description:
-      "AI-generated full-length mocks for all state & central exams. Adaptive difficulty, instant analytics, and detailed solutions.",
 
-    price: 1999,
-    discountPercentage: 70,
-    aiFeatures: ["Adaptive", "Instant Analysis", "Personalized Feedback"],
-    coverImage: "https://placehold.co/320x180.png", // Placeholder for tiger image
-    link: "/generate-set?exam=ssc-gd",
-  },
-  {
-    id: "2",
-    title: "SUPER RAILWAY AI MOCK PACK",
-    subtitle: "(ALL RAILWAY EXAMS)",
-    description:
-      "Comprehensive AI-powered mocks for all Railway exams. Real exam interface, topic-wise analytics, and smart revision.",
+const mockTestSets = await getExams()
 
-    price: 1499,
-    discountPercentage: 60,
-    aiFeatures: ["Topic-wise Analytics", "Smart Revision", "Real Exam UI"],
-    coverImage: "https://placehold.co/320x180.png", // Placeholder for railway image
-    link: "/generate-set?exam=rail-group-d",
-  },
-];
+
+// const mockTestSets: MockTestSet[] = [
+//   {
+//     id: "1",
+//     title: "SSC GD Mock Test Set",
+//     subtitle: "(SURE SELECTION)",
+//     description:
+//       "AI-generated full-length mocks for all state & central exams. Adaptive difficulty, instant analytics, and detailed solutions.",
+
+//     price: 1999,
+//     discountPercentage: 70,
+//     aiFeatures: ["Adaptive", "Instant Analysis", "Personalized Feedback"],
+//     coverImage: "https://placehold.co/320x180.png", // Placeholder for tiger image
+//     link: "/generate-set?exam=ssc-gd",
+//   },
+//   {
+//     id: "2",
+//     title: "SUPER RAILWAY AI MOCK PACK",
+//     subtitle: "(ALL RAILWAY EXAMS)",
+//     description:
+//       "Comprehensive AI-powered mocks for all Railway exams. Real exam interface, topic-wise analytics, and smart revision.",
+
+//     price: 1499,
+//     discountPercentage: 60,
+//     aiFeatures: ["Topic-wise Analytics", "Smart Revision", "Real Exam UI"],
+//     coverImage: "https://placehold.co/320x180.png", // Placeholder for railway image
+//     link: "/generate-set?exam=rail-group-d",
+//   },
+// ];
 
 // Dummy data for features and courses
 const features: FeatureItem[] = [
@@ -79,7 +84,7 @@ export default function HomePage() {
             Exams handpicked for you
           </h2>
           <div className="grid gap-4">
-            {mockTestSets.map((course) => (
+            {mockTestSets.map((course:MockTestSet) => (
               <TestCard key={course.id} {...course} />
             ))}
           </div>
