@@ -1,6 +1,7 @@
 import { FeatureItem, MockTestSet } from "@/types/types";
 import TestCard from "@/components/TestCard";
 import FeatureItemCard from "@/components/FeatureItemCard";
+import Navbar from "@/components/Navbar";
 
 // Dummy data for AI-generated mock test sets
 const mockTestSets: MockTestSet[] = [
@@ -62,7 +63,9 @@ const features: FeatureItem[] = [
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div className="min-h-screen bg-gray-900 text-white pt-16">
+
+      <Navbar/>
       <main className="container mx-auto p-4 pt-8">
         {/* Feature Icons Section */}
         <section className="mb-8">
