@@ -2,7 +2,6 @@ import { FeatureItem, MockTestSet } from "@/types/types";
 import TestCard from "@/components/TestCard";
 import FeatureItemCard from "@/components/FeatureItemCard";
 
-// Dummy data for AI-generated mock test sets
 const mockTestSets: MockTestSet[] = [
   {
     id: "1",
@@ -15,7 +14,7 @@ const mockTestSets: MockTestSet[] = [
     discountPercentage: 70,
     aiFeatures: ["Adaptive", "Instant Analysis", "Personalized Feedback"],
     coverImage: "https://placehold.co/320x180.png", // Placeholder for tiger image
-    link: "#",
+    link: "/generate-set?exam=ssc-gd",
   },
   {
     id: "2",
@@ -28,7 +27,7 @@ const mockTestSets: MockTestSet[] = [
     discountPercentage: 60,
     aiFeatures: ["Topic-wise Analytics", "Smart Revision", "Real Exam UI"],
     coverImage: "https://placehold.co/320x180.png", // Placeholder for railway image
-    link: "#",
+    link: "/generate-set?exam=rail-group-d",
   },
 ];
 
@@ -62,7 +61,8 @@ const features: FeatureItem[] = [
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div className="">
+     
       <main className="container mx-auto p-4 pt-8">
         {/* Feature Icons Section */}
         <section className="mb-8">
