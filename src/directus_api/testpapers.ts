@@ -1,5 +1,5 @@
 import { axios } from "./config";
-import {difference, filter, find, get, head, map, sortBy} from "lodash"
+import {difference, filter, find, get, head, map, sortBy, toLower} from "lodash"
 
 async function get_user_attempted_test_papers() {
     const response = await axios.get('/users/me',{
@@ -40,7 +40,7 @@ async function upsert_question_paper(questions:any, count:number, exam_name:stri
         params:{
             filter:{
                 name:{
-                    _eq:exam_name
+                    _eq:toLower(exam_name)
                 }
             },
             fields:['id']
@@ -62,7 +62,7 @@ async function upsert_question_paper(questions:any, count:number, exam_name:stri
     })
 
     return get(upsert_resp, "data.data", [])
-    // return upsert_resp
+
 
 }
 

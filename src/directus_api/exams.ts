@@ -29,4 +29,20 @@ async function getExamsByName(name:string) {
 
 }
 
-export {getExams, getExamsByName}
+
+async function getExamQuestions(id:number){
+    const resp = await axios.get('/items/testPapers',{
+        params:{
+            filter:{
+                id:{
+                    _eq:id
+                }
+            },
+            fields:["questions"]
+        }
+    })
+
+    return get(resp, 'data.data', [])
+}
+
+export {getExams, getExamsByName, getExamQuestions}
