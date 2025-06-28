@@ -10,9 +10,11 @@ type ExamSelectorProps = {
   subjects: Subject[];
 };
 
-export default function ExamSelector({ subjects }: ExamSelectorProps) {
+export default function ExamSelector({ subjects }: ExamSelectorProps,  examName: string) {
   const [selectedSubject, setSelectedSubject] = useState<string>(subjects[0]?.name || '');
   const [selectedTopic, setSelectedTopic] = useState<string>('');
+  const [mode, setMode] = useState<'evaluation' | 'improvisation'>('evaluation');
+  const [numQuestions, setNumQuestions] = useState<number>(1);
 
   const handleGenerate = () => {
     if (!selectedSubject || !selectedTopic) {
@@ -20,6 +22,14 @@ export default function ExamSelector({ subjects }: ExamSelectorProps) {
       return;
     }
     console.log('Generating questions for:', selectedSubject, selectedTopic);
+    const body = {
+      exam: examName,
+      subject: selectedSubject,
+      topic: selectedTopic,
+      mode: mode,
+      count: mode === 'evaluation' ? numQuestions : 1, // For improvisation, we can set count to 1 or any other logic
+    }
+
 
     
 
@@ -68,8 +78,50 @@ export default function ExamSelector({ subjects }: ExamSelectorProps) {
           ))}
         </select>
       </div>
+      {/* Mode Selector */}
+      <div>
+        <label className="block mb-1 font-medium">Mode</label>
+        <div className="flex items-center gap-4">
+          <label className="flex items-center gap-1">
+        <input
+          type="radio"
+          name="mode"
+          value="evaluation"
+          checked={mode === 'evaluation'}
+          onChange={() => setMode('evaluation')}
+        />
+        Self Evaluation
+          </label>
+          <label className="flex items-center gap-1">
+        <input
+          type="radio"
+          name="mode"
+          value="improvisation"
+          checked={mode === 'improvisation'}
+          onChange={() => setMode('improvisation')}
+        />
+        Self Improvisation
+          </label>
+        </div>
+      </div>
 
-      {/* Generate Button */}
+      {/* Number of Questions (only for Self Evaluation) */}
+      {mode === 'evaluation' && (
+        <div>
+          <label className="block mb-1 font-medium">How many questions?</label>
+          <div className="flex items-center gap-4">
+            <input
+              type="range"
+              min={1}
+              max={25}
+              value={numQuestions}
+              onChange={e => setNumQuestions(Number(e.target.value))}
+              className="w-full"
+            />
+            <span className="min-w-[2rem] text-center">{numQuestions}</span>
+          </div>
+        </div>
+      )}
       <button
         onClick={handleGenerate}
         className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"

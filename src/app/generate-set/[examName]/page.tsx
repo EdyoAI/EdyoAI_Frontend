@@ -21,7 +21,7 @@ export default async function generateExamSet({ params }: { params: { examName: 
   </p>
 
   <div className="pt-4">
-    <ExamSelector subjects={examDetails} />
+    <ExamSelector subjects={examDetails} examName={examName} />
   </div>
 </div>
 
