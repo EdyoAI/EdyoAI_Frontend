@@ -37,7 +37,7 @@ const Navbar: React.FC = () => {
     <>
       <nav className="fixed top-0 left-0 z-50 flex h-16 w-full items-center justify-between px-6 py-4 text-white shadow-md backdrop-blur-md">
         {/* Left Section */}
-        <Link href="#about" className="flex items-center space-x-4">
+        <Link href="/" className="flex items-center space-x-4">
           <Image
             src="https://placehold.co/100x100.png"
             height={40}
