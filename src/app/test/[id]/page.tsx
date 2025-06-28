@@ -1,15 +1,14 @@
-import { useRouter } from 'next/router';
+"use client";
+import { Question } from "@/types/types";
+import { useSelector } from "react-redux";
+import type { RootState } from "@/lib/store";
 
 export default function Workspace() {
-  const router = useRouter();
-  const { exam, subject, topic, questionCount } = router.query;
-
+  const questions = useSelector((state:RootState) => state.questions.questions);
+  console.log(questions);
   return (
     <div>
-      <div>exam: {exam}</div>
-      <div>subject: {subject}</div>
-      <div>topic: {topic}</div>
-      <div>questionCount: {questionCount}</div>
+      <p>test</p>
     </div>
   );
 }

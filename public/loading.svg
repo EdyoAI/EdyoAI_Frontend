@@ -1,0 +1,105 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(100,100)">
+    <g>
+      <circle r="80" fill="none"/>
+      <g>
+        <g>
+          <circle cx="0" cy="-60" r="8" fill="#888">
+            <animate attributeName="fill-opacity"
+                     from="1" to="0.3"
+                     dur="1s"
+                     begin="0s" repeatCount="indefinite"/>
+          </circle>
+        </g>
+        <g transform="rotate(30)">
+          <circle cx="0" cy="-60" r="8" fill="#999">
+            <animate attributeName="fill-opacity"
+                     from="1" to="0.3"
+                     dur="1s"
+                     begin="0.083s" repeatCount="indefinite"/>
+          </circle>
+        </g>
+        <g transform="rotate(60)">
+          <circle cx="0" cy="-60" r="8" fill="#aaa">
+            <animate attributeName="fill-opacity"
+                     from="1" to="0.3"
+                     dur="1s"
+                     begin="0.166s" repeatCount="indefinite"/>
+          </circle>
+        </g>
+        <g transform="rotate(90)">
+          <circle cx="0" cy="-60" r="8" fill="#bbb">
+            <animate attributeName="fill-opacity"
+                     from="1" to="0.3"
+                     dur="1s"
+                     begin="0.249s" repeatCount="indefinite"/>
+          </circle>
+        </g>
+        <g transform="rotate(120)">
+          <circle cx="0" cy="-60" r="8" fill="#ccc">
+            <animate attributeName="fill-opacity"
+                     from="1" to="0.3"
+                     dur="1s"
+                     begin="0.332s" repeatCount="indefinite"/>
+          </circle>
+        </g>
+        <g transform="rotate(150)">
+          <circle cx="0" cy="-60" r="8" fill="#ddd">
+            <animate attributeName="fill-opacity"
+                     from="1" to="0.3"
+                     dur="1s"
+                     begin="0.415s" repeatCount="indefinite"/>
+          </circle>
+        </g>
+        <g transform="rotate(180)">
+          <circle cx="0" cy="-60" r="8" fill="#eee">
+            <animate attributeName="fill-opacity"
+                     from="1" to="0.3"
+                     dur="1s"
+                     begin="0.5s" repeatCount="indefinite"/>
+          </circle>
+        </g>
+        <g transform="rotate(210)">
+          <circle cx="0" cy="-60" r="8" fill="#ddd">
+            <animate attributeName="fill-opacity"
+                     from="1" to="0.3"
+                     dur="1s"
+                     begin="0.583s" repeatCount="indefinite"/>
+          </circle>
+        </g>
+        <g transform="rotate(240)">
+          <circle cx="0" cy="-60" r="8" fill="#ccc">
+            <animate attributeName="fill-opacity"
+                     from="1" to="0.3"
+                     dur="1s"
+                     begin="0.666s" repeatCount="indefinite"/>
+          </circle>
+        </g>
+        <g transform="rotate(270)">
+          <circle cx="0" cy="-60" r="8" fill="#bbb">
+            <animate attributeName="fill-opacity"
+                     from="1" to="0.3"
+                     dur="1s"
+                     begin="0.749s" repeatCount="indefinite"/>
+          </circle>
+        </g>
+        <g transform="rotate(300)">
+          <circle cx="0" cy="-60" r="8" fill="#aaa">
+            <animate attributeName="fill-opacity"
+                     from="1" to="0.3"
+                     dur="1s"
+                     begin="0.832s" repeatCount="indefinite"/>
+          </circle>
+        </g>
+        <g transform="rotate(330)">
+          <circle cx="0" cy="-60" r="8" fill="#999">
+            <animate attributeName="fill-opacity"
+                     from="1" to="0.3"
+                     dur="1s"
+                     begin="0.915s" repeatCount="indefinite"/>
+          </circle>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
