@@ -1,15 +1,19 @@
 "use client";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
+import { useDispatch } from 'react-redux';
+import { setQuestions } from '@/features/questionSlice';
 
 
 export default function GenerateSet() {
+    const router = useRouter();
     const searchParams = useSearchParams();
     const examNameParam = searchParams.get("exam");
     const [examName, setExamName] = useState(examNameParam || "");
     const [subjectName, setSubjectName] = useState("");
     const [topicName, setTopicName] = useState("");
     const [numQuestions, setNumQuestions] = useState(1);
+    const dispatch = useDispatch();
 
     // Subject and topic options based on exam
     const subjectOptions: Record<string, string[]> = {
@@ -46,14 +50,30 @@ export default function GenerateSet() {
 
     const currentSubjects = examName ? subjectOptions[examName] || [] : [];
     const currentTopics = examName && subjectName ? (topicOptions[examName]?.[subjectName] || []) : [];
-
+    
+    const getQuestions = async (e: { preventDefault: () => void; }) => {
+        e.preventDefault();
+        try {
+            const params = new URLSearchParams({
+                exam: examName,
+                subject: subjectName,
+                topic: topicName,
+                limit: numQuestions.toString(),
+            });
+            const res = await fetch(`https://685feb35c55df675589fa148.mockapi.io/questions`);
+            if (!res.ok) throw new Error('Failed to fetch questions');
+            const data = await res.json();
+            // console.log('Fetched questions:', data);
+            dispatch(setQuestions(data));
+            router.push("/test/1");
+        } catch (err) { 
+            console.error('Error fetching questions:', err);
+        }
+    }
     return (
       <div className="flex justify-center">
         <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            // handle form submission here
-          }}
+          onSubmit={getQuestions}
           className="flex flex-col gap-4 w-[80vw] max-w-md"
         >
           {/* Exam Name */}
