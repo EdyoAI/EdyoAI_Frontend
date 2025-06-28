@@ -1,4 +1,6 @@
 'use client'
+import axios from 'axios';
+import { redirect } from 'next/navigation';
 import { useState } from 'react';
 
 interface Subject {
@@ -8,15 +10,20 @@ interface Subject {
 
 type ExamSelectorProps = {
   subjects: Subject[];
+  examName: string
 };
 
-export default function ExamSelector({ subjects }: ExamSelectorProps,  examName: string) {
+type examNameProp = {
+  examName: string
+}
+
+export default function ExamSelector({ subjects , examName}: ExamSelectorProps) {
   const [selectedSubject, setSelectedSubject] = useState<string>(subjects[0]?.name || '');
   const [selectedTopic, setSelectedTopic] = useState<string>('');
   const [mode, setMode] = useState<'evaluation' | 'improvisation'>('evaluation');
   const [numQuestions, setNumQuestions] = useState<number>(1);
 
-  const handleGenerate = () => {
+  const handleGenerate =async () => {
     if (!selectedSubject || !selectedTopic) {
       alert('Please select both subject and topic');
       return;
@@ -26,10 +33,15 @@ export default function ExamSelector({ subjects }: ExamSelectorProps,  examName:
       exam: examName,
       subject: selectedSubject,
       topic: selectedTopic,
-      mode: mode,
+      // mode: mode,
       count: mode === 'evaluation' ? numQuestions : 1, // For improvisation, we can set count to 1 or any other logic
     }
 
+    if (mode === 'evaluation') {
+      const resp = await axios.post('/api/generatetests',body)
+      console.log(resp.data.data)
+      redirect(`/test/evaluation/${resp.data.data.id}`)
+    }
 
     
 
