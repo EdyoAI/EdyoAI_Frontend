@@ -9,14 +9,22 @@ interface FeatureItem {
   
   interface MockTestSet {
     id: string;
-    title: string;
-    subtitle: string;
-    description: string;
-    price: number;
-    discountPercentage: number;
-    aiFeatures: string[]; // e.g., ["Adaptive", "Instant Analysis"]
-    coverImage: string;
-    link: string;
+    name:string;
+    banner:string;
+    details:{
+      title:string;
+      subtitle:string;
+      description:string;
+      features:string[]
+    }
+    // title: string;
+    // subtitle: string;
+    // description: string;
+    // price: number;
+    // discountPercentage: number;
+    // aiFeatures: string[]; // e.g., ["Adaptive", "Instant Analysis"]
+    // coverImage: string;
+    // link: string;
   }
 
   interface Question {
