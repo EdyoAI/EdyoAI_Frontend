@@ -1,4 +1,3 @@
-import { NextResponse } from "next/server";
 import { axios } from "./config";
 import {difference, filter, find, get, head, map, sortBy} from "lodash"
 

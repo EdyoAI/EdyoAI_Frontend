@@ -14,7 +14,7 @@ async function generate_AI_TestPaper(exam:string, topic:string, subject:string, 
         "subject": "current_affairs",
         "num_qs": 50
     })
-
+    // response.
     // console.log(response.data)
 
     const generated_questions_from_ai = get(response, 'data', " ")

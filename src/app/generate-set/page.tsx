@@ -3,6 +3,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { useDispatch } from 'react-redux';
 import { setQuestions } from '@/features/questionSlice';
+import axios from "axios";
 
 
 export default function GenerateSet() {
@@ -54,18 +55,24 @@ export default function GenerateSet() {
     const getQuestions = async (e: { preventDefault: () => void; }) => {
         e.preventDefault();
         try {
-            const params = new URLSearchParams({
-                exam: examName,
-                subject: subjectName,
-                topic: topicName,
-                limit: numQuestions.toString(),
-            });
-            const res = await fetch(`https://685feb35c55df675589fa148.mockapi.io/questions`);
-            if (!res.ok) throw new Error('Failed to fetch questions');
-            const data = await res.json();
+            const body = {
+                // exam: examName,
+                // // subject: subjectName,
+                // subject:
+                // topic: topicName,
+                // count: numQuestions,
+                "count":2,
+                "topic":"test",
+                "subject":"test_SUbject",
+                "exam":"test-exam"
+              };
+            const resp = await axios.post('/api/generatetests',body)
+            if (resp.status !=  200) throw new Error('Failed to fetch questions');
+            // const data = await res.json();
+            console.log(resp.data)
             // console.log('Fetched questions:', data);
-            dispatch(setQuestions(data));
-            router.push("/test/1");
+            // dispatch(setQuestions(data));
+            // router.push("/test/1");
         } catch (err) { 
             console.error('Error fetching questions:', err);
         }
