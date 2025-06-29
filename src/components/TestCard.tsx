@@ -1,6 +1,6 @@
 import { MockTestSet } from "@/types/types";
 import Image from "next/image";
-import Link from "next/link";
+import StartTestButton from "./StartTestButton";
 
 export default function TestCard({
   id,
@@ -9,7 +9,7 @@ export default function TestCard({
   banner
 }: MockTestSet) {
   // const discountedPrice = Math.round(price * (1 - discountPercentage / 100));
-
+  
   return (
     <div className="bg-gray-800 rounded-xl shadow-lg p-4 mb-4 overflow-hidden relative">
       <div className="flex flex-col md:flex-row items-center md:items-start gap-4">
@@ -47,14 +47,7 @@ export default function TestCard({
               </span>
             ))}
           </div>
-
-          <Link
-            // href={`/generate-set?exam=${name}`}
-            href={`/generate-set/${name}`}
-            className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-full transition-colors mt-6 inline-block"
-          >
-            Start Test
-          </Link>
+          <StartTestButton name={name} />
         </div>
       </div>
     </div>

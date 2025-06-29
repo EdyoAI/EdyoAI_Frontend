@@ -91,7 +91,7 @@ export default function GenerateSet() {
           height={100}
           src="/loading.svg"
           alt="loading"
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 hidden"
+          className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 hidden"
           style={{ display: loading ? "block" : "none" }}
         />
         <div className="flex justify-center">

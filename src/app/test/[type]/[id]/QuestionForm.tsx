@@ -32,7 +32,7 @@ const MCQSheet: React.FC<MCQSheetProps> = ({ questions}) => {
       return selectedAnswers[i] === q.answer ? score + 1 : score;
     }, 0);
 
-    redirect("/")
+    // redirect("/")
 
     // Call API here
       //store to db

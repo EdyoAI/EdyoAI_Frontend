@@ -3,8 +3,9 @@ import TestCard from "@/components/TestCard";
 import FeatureItemCard from "@/components/FeatureItemCard";
 import { getExams } from "@/directus_api/exams";
 
+  const mockTestSets = await getExams();
+  console.log(mockTestSets);
 
-const mockTestSets = await getExams()
 
 const features: FeatureItem[] = [
   {
@@ -35,9 +36,9 @@ const features: FeatureItem[] = [
 
 export default async function HomePage() {
 
+
   return (
     <div className="">
-     
       <main className="container mx-auto p-4 pt-8">
         {/* Feature Icons Section */}
         <section className="mb-8">
@@ -54,7 +55,7 @@ export default async function HomePage() {
             Exams handpicked for you
           </h2>
           <div className="grid gap-4">
-            {mockTestSets.map((course:MockTestSet) => (
+            {mockTestSets.map((course: MockTestSet) => (
               <TestCard key={course.id} {...course} />
             ))}
           </div>
