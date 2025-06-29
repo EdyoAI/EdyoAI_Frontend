@@ -1,4 +1,5 @@
 'use client'
+import { upsertResult } from '@/directus_api/results';
 import axios from 'axios';
 import { redirect } from 'next/navigation';
 import { useState } from 'react';
@@ -41,6 +42,17 @@ export default function ExamSelector({ subjects , examName}: ExamSelectorProps) 
       const resp = await axios.post('/api/generatetests',body)
       console.log(resp.data.data)
       redirect(`/test/evaluation/${resp.data.data.id}`)
+    }else{
+      const resp = await axios.post(`/api/generatesession`,{
+        "exam": "SSC",
+        "topic": "ইতিহাস",
+        "subject": "current_affairs",
+        'difficulty':5
+      },{withCredentials:true})
+
+      console.log(resp.data)
+
+      redirect(`/test/cont/${resp.data.session_id}`)
     }
 
     

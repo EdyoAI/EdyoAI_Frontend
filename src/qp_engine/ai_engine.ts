@@ -5,14 +5,14 @@ import { get } from "lodash"
 async function generate_AI_TestPaper(exam:string, topic:string, subject:string, count:number){
     console.log(`${process.env.AI_API_URL}/generatetests`)
     const response = await axios.post(`${process.env.AI_API_URL}/generate`,{
-        "exam": exam,
-        "topic": topic,
-        "subject": subject,
-        "num_qs": count
-        // "exam": "SSC",
-        // "topic": "ইতিহাস",
-        // "subject": "current_affairs",
-        // "num_qs": 50
+        // "exam": exam,
+        // "topic": topic,
+        // "subject": subject,
+        // "num_qs": count
+        "exam": "SSC",
+        "topic": "ইতিহাস",
+        "subject": "current_affairs",
+        "num_qs": 50
     })
     // response.
     // console.log(response.data)

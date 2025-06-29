@@ -38,7 +38,7 @@ async function getExamQuestions(id:number){
                     _eq:id
                 }
             },
-            fields:["questions"]
+            fields:["questions","*"]
         }
     })
 
